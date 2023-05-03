@@ -18,17 +18,17 @@ class Game(tk.Frame):
             height=800
         )
         # padding for score area
-        self.main_grid.grid(pady=(110, 0))
+        self.main_grid.grid(pady=(160, 0))
 
         # create GUI
         self.make_GUI()
         # start game function
 
-        # key bindings
-        self.master.bind("<Left>", self.left)
-        self.master.bind("<Right>", self.right)
-        self.master.bind("<Up>", self.up)
-        self.master.bind("<Down>", self.down)
+        # # key bindings
+        # self.master.bind("<Left>", self.left)
+        # self.master.bind("<Right>", self.right)
+        # self.master.bind("<Up>", self.up)
+        # self.master.bind("<Down>", self.down)
 
         # loops to keep the board running
         self.mainloop()
@@ -103,7 +103,7 @@ class Game(tk.Frame):
             self.cells.append(row)
 
         score_frame = tk.Frame()
-        score_frame.place(relx=0.5, y=45, anchor="center")
+        score_frame.place(relx=0.5, y=65, anchor="center")
         tk.Label(
             score_frame,
             text="Score",
@@ -121,6 +121,25 @@ class Game(tk.Frame):
         row = random.randint(0, 3)
         col = random.randint(0, 3)
         self.matrix[row][col] = 2
+        self.cells[row][col]["frame"].configure(bg=self.Color_Cells[2])
+        self.cells[row][col]["number"].configure(
+            bg=self.Color_Cells[2],
+            fg=self.Color_CellNumber[2],
+            font=self.Fonts_CellNumber[2],
+            text="2"
+        )
+        while (self.matrix[row][col] != 0):
+            row = random.randint(0, 3)
+            col = random.randint(0, 3)
+        self.matrix[row][col] = 2
+        self.cells[row][col]["frame"].configure(bg=self.Color_Cells[2])
+        self.cells[row][col]["number"].configure(
+            bg=self.Color_Cells[2],
+            fg=self.Color_CellNumber[2],
+            font=self.Fonts_CellNumber[2],
+            text="2"
+        )
+        self.score = 0
 
 
 def main():
